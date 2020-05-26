@@ -11,9 +11,36 @@ html {
 body {
 	margin: 0;
 	padding: 0;
+	--background: white;
+	--color: black;
 }
 
-body[data-dark-mode="true"] {
+body[data-dark-mode="true"] .dark-mode-wrapper {
 	background: black;
 	color: white;
+}
+
+body[data-theme="winter"] {
+	--background: blue;
+	--color: white;
+}
+
+body[data-theme="summer"] {
+	--background: orange;
+	--color: black;
+}
+
+body[data-theme="fall"] {
+	--background: brown;
+	--color: white;
+}
+
+body[data-theme="spring"] {
+	--background: green;
+	--color: black;
+}
+
+.theme-wrapper {
+	background: var(--background);
+	color: var(--color);
 }

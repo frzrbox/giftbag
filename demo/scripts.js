@@ -1,6 +1,6 @@
 import giftbag from '../src'
 
-const { darkMode } = giftbag();
+const { darkMode, themeBuilder } = giftbag();
 
 const darkModeWrapper = document.querySelector('.dark-mode-wrapper');
 const darkModeToggle = document.querySelector('.dark-mode-toggle');
@@ -9,3 +9,18 @@ darkMode({
     wrapper: darkModeWrapper,
     trigger: darkModeToggle
 })
+
+
+// Has to take in an intial value which will be the starting theme, unless a user had previously chosen a different theme
+const siteThemeBuilder = themeBuilder({ initial: 'winter' });
+
+const themeSelector = document.querySelector('.theme-selector');
+
+// Set the initial value of the select with getCurrentTheme(), so that it will update with the local storage changes in case the page refreshes
+themeSelector.value = siteThemeBuilder.getCurrentTheme()
+
+// Dynamically change the theme using the setTheme method()
+themeSelector.addEventListener('change', e => {
+    siteThemeBuilder.setTheme(e.target.value);
+})
+
