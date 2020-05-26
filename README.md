@@ -1,8 +1,18 @@
+# ⚠️⚠️ Refactored version of original giftbag js don't use yet ⚠️⚠️
+
 # Giftbag
 
 A lighweight library for quickly building animations
 
 ## Dark Mode
+
+**Dark Mode takes in an object of options to setup and initialize**
+| Name | Description | Default | Optional |
+|-------------|-----------------------------------------------------------------|--------------|----------|
+| wrapper | The container the dark mode animation | none | required |
+| activeClass | The class that will be applied to all children of the wrapper | in-dark-mode | optional |
+| active | The initial state of dark mode | false | optional |
+| trigger | The element that will be used to toggle the dark mode animation | none | required |
 
 ```html
 <header>
@@ -17,6 +27,7 @@ A lighweight library for quickly building animations
 ```
 
 ```js
+import giftbag from "giftbag";
 const { darkMode } = giftbag();
 
 darkMode({
