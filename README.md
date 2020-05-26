@@ -2,7 +2,7 @@
 
 # Giftbag
 
-A lighweight library for quickly building animations
+A lightweight library for quickly building animations
 
 ## Dark Mode
 
@@ -11,7 +11,7 @@ The purpose of dark mode is to act as a toggle only between two themes, if you w
 **Dark Mode takes in an object of options to setup and initialize**
 | Name | Description | Default | Optional |
 |-------------|-----------------------------------------------------------------|--------------|----------|
-| wrapper | The container the dark mode animation | none | required |
+| wrapper | The container of the dark mode animation | none | required |
 | activeClass | The class that will be applied to all children of the wrapper | in-dark-mode | optional |
 | active | The initial state of dark mode | false | optional |
 | trigger | The element that will be used to toggle the dark mode animation | none | required |
@@ -80,7 +80,7 @@ Build multiple themes that can be toggled throughout your website
 **Theme builder can take an object of the following options**
 | Name | Description | Default | Optional |
 |----------|-----------------------------------|---------|----------|
-| provider | The container the theme animation | body | optional |
+| provider | The container of the theme animation | body | optional |
 | initial | Set the default theme to start in | none | optional |
 
 **Methods**
@@ -116,7 +116,7 @@ Build multiple themes that can be toggled throughout your website
 ```
 
 ```js
-// Has to take in an intial value which will be the starting theme, unless a user had previously chosen a different theme
+// Has to take in an initial value which will be the starting theme, unless a user had previously chosen a different theme
 const siteThemeBuilder = themeBuilder({ initial: "winter" });
 
 const themeSelector = document.querySelector(".theme-selector");
@@ -124,7 +124,7 @@ const themeSelector = document.querySelector(".theme-selector");
 // Set the initial value of the select with getCurrentTheme(), so that it will update with the local storage changes in case the page refreshes
 themeSelector.value = siteThemeBuilder.getCurrentTheme();
 
-// Dynamically change the theme using the setTheme method()
+// Dynamically change the theme using the setTheme() method
 themeSelector.addEventListener("change", (e) => {
 	siteThemeBuilder.setTheme(e.target.value);
 });
