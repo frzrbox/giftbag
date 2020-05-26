@@ -1,0 +1,25 @@
+{
+	"name": "giftbag",
+	"version": "0.0.1",
+	"description": "A lighweight library for quickly building animations",
+	"main": "lib/index.js",
+	"files": [
+		"lib"
+	],
+	"scripts": {
+		"dev": "npx parcel demo/index.html",
+		"build-lib": "rm -rf lib &&  npx parcel build src/index.js -d lib",
+		"build-demo": "rm -rf .cache dist && npx parcel build demo/index.html -d dist"
+	},
+	"keywords": [
+		"parallax",
+		"scroll",
+		"animation",
+		"giftbag"
+	],
+	"author": "frzrbox",
+	"license": "MIT",
+	"devDependencies": {
+		"cssnano": "^4.1.10"
+	}
+}
