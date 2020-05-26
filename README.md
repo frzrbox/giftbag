@@ -6,7 +6,7 @@ A lighweight library for quickly building animations
 
 ## Dark Mode
 
-The purpose of dark mode is to toggle between an initial theme and a dark mode theme, if you want to build mulitple different themes you can use the [Theme Builder](#theme-builder) api
+The purpose of dark mode is to act as a toggle only between two themes, if you want to build mulitple different themes you can use the [Theme Builder](#theme-builder) api
 
 **Dark Mode takes in an object of options to setup and initialize**
 | Name | Description | Default | Optional |
