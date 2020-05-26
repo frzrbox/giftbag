@@ -6,6 +6,8 @@ A lighweight library for quickly building animations
 
 ## Dark Mode
 
+The purpose of dark mode is to toggle between an initial theme and a dark mode theme, if you want to build mulitple different themes you can use the [Theme Builder]("#theme-builder") api
+
 **Dark Mode takes in an object of options to setup and initialize**
 | Name | Description | Default | Optional |
 |-------------|-----------------------------------------------------------------|--------------|----------|
@@ -68,3 +70,7 @@ h3.in-dark-mode {
 	color: var(--light-text);
 }
 ```
+
+## Theme Builder
+
+Build multiple themes that can be toggled throughout your website
