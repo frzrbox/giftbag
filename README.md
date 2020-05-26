@@ -1,3 +1,5 @@
+# ⚠️⚠️ Refactored version of original giftbag js don't use yet ⚠️⚠️
+
 # Giftbag
 
 A lighweight library for quickly building animations
