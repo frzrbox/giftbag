@@ -1,26 +1,8 @@
 export default function parallax({ el, ease = 'linear' } = {}) {
-    let revealPoint = 0;
-
     function runParallax() {
         const pageTop = window.pageYOffset;
         const pageMid = pageTop + window.innerHeight / 2;
-        const wHeight = window.innerHeight;
-        const revealTop = el.getBoundingClientRect().top;
-        let active;
-
-        if (el.getAttribute("data-reveal-point")) {
-            revealPoint = parseFloat(el.getAttribute("data-reveal-point"));
-        }
-
-        if (revealTop < wHeight - revealPoint) {
-            active = true;
-        } else {
-            active = false;
-        }
-
-        if (revealTop < 0 + revealPoint) {
-            active = false;
-        }
+        let active = true;
 
         if (active) {
             // Run this if it already has a data attribute set
@@ -56,7 +38,6 @@ export default function parallax({ el, ease = 'linear' } = {}) {
 
             el.style.transition = `transform ${ease}`;
         }
-
         requestAnimationFrame(runParallax)
     }
 

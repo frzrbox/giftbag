@@ -4,6 +4,7 @@
     --light-section-background: white;
     --light-section-color: black;
     --primary-accent: #f9ca24;
+    --box-shadow: 8px 6px 29px -3px rgba(0, 0, 0, 0.37);
 }
 
 html {
@@ -144,7 +145,7 @@ select {
 
 #parallax {
     position: relative;
-    background: var(--light-section-color);
+    background: var(--dark-section-background);
     z-index: -2;
 }
 
@@ -160,4 +161,6 @@ select {
     width: 500px;
     background: var(--primary-accent);
     z-index: -1;
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
 }
