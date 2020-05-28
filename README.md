@@ -4,6 +4,11 @@
 
 A lightweight library for quickly building animations
 
+**Content**
+[Dark Mode](#dark-mode)
+[Theme Builder](#theme-builder)
+[Parallax](#parallax)
+
 ## Dark Mode
 
 The purpose of dark mode is to act as a toggle only between two themes, if you want to build mulitple different themes you can use the [Theme Builder](#theme-builder) api
