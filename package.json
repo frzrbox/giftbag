@@ -9,7 +9,7 @@
 	"scripts": {
 		"dev": "npx parcel demo/index.html",
 		"build-lib": "rm -rf lib &&  npx parcel build src/index.js -d lib",
-		"build-demo": "rm -rf .cache dist && npx parcel build demo/index.html -d dist"
+		"build-demo": "npx parcel build demo/index.html"
 	},
 	"keywords": [
 		"parallax",
