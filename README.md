@@ -9,7 +9,7 @@ A lightweight library for quickly building animations
 [Theme Builder](#theme-builder)<br/>
 [Parallax](#parallax)<br/>
 
-**Get Started**
+**Get Started** <br/>
 `npm i giftbag`
 
 ## Dark Mode
