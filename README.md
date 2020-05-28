@@ -9,6 +9,9 @@ A lightweight library for quickly building animations
 [Theme Builder](#theme-builder)<br/>
 [Parallax](#parallax)<br/>
 
+**Get Started**
+`npm i giftbag`
+
 ## Dark Mode
 
 The purpose of dark mode is to act as a toggle only between two themes, if you want to build mulitple different themes you can use the [Theme Builder](#theme-builder) api
