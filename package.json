@@ -1,7 +1,7 @@
 {
 	"name": "giftbag",
 	"version": "0.0.1",
-	"description": "A lighweight library for quickly building animations",
+	"description": "A lightweight library for quickly building animations",
 	"main": "lib/index.js",
 	"files": [
 		"lib"

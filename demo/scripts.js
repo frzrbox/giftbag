@@ -1,15 +1,6 @@
 import giftbag from '../src'
 
-const { darkMode, themeBuilder } = giftbag();
-
-const darkModeWrapper = document.querySelector('.dark-mode-wrapper');
-const darkModeToggle = document.querySelector('.dark-mode-toggle');
-
-darkMode({
-    wrapper: darkModeWrapper,
-    trigger: darkModeToggle
-})
-
+const { themeBuilder, scroll, parallax } = giftbag();
 
 // Has to take in an intial value which will be the starting theme, unless a user had previously chosen a different theme
 const siteThemeBuilder = themeBuilder({ initial: 'winter' });
@@ -24,3 +15,8 @@ themeSelector.addEventListener('change', e => {
     siteThemeBuilder.setTheme(e.target.value);
 })
 
+
+// Parallax
+const parallaxElements = document.querySelectorAll('.parallax-element')
+
+parallaxElements.forEach(el => parallax({ el }))
