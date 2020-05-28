@@ -5,9 +5,9 @@
 A lightweight library for quickly building animations
 
 **Content**
-[Dark Mode](#dark-mode)
-[Theme Builder](#theme-builder)
-[Parallax](#parallax)
+[Dark Mode](#dark-mode)<br/>
+[Theme Builder](#theme-builder)<br/>
+[Parallax](#parallax)<br/>
 
 ## Dark Mode
 
