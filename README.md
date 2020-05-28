@@ -4,10 +4,13 @@
 
 A lightweight library for quickly building animations
 
-**Content**
+**Content** <br/>
 [Dark Mode](#dark-mode)<br/>
 [Theme Builder](#theme-builder)<br/>
 [Parallax](#parallax)<br/>
+
+**Get Started**
+`npm i giftbag`
 
 ## Dark Mode
 
