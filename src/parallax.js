@@ -1,4 +1,4 @@
-export default function parallax({ el, ease = 'linear' } = {}) {
+export default function parallax({ el, ease = 'linear' }) {
     function runParallax() {
         const pageTop = window.pageYOffset;
         const pageMid = pageTop + window.innerHeight / 2;

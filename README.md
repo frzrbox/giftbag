@@ -163,3 +163,51 @@ body[data-theme="spring"] {
 	color: var(--color);
 }
 ```
+
+## Parallax
+
+Create and customize multi layered parallax effects
+
+**Customize parallax with an object of options**
+| name | description | optional |
+|------|---------------------------|----------|
+| el | target parallax element | required |
+| ease | Returns the current theme | optional |
+
+**Element attributes**
+| name | description | default |
+|-------------------------|---------------------------------------|----------|
+| data-parallax-speed | speed and direction of the parallax | 0 |
+| data-parallax-direction | orientation the parallax will animate | vertical |
+
+- `data-parallax-speed` - positive values animate from left / right or top / bottom, while negative values will do the opposite. The higher the value the faster the speed.
+- `data-parallax-direction` - either `horizontal` or `vertical`
+
+```html
+<section>
+	<h3
+		class="parallax-element"
+		data-parallax-direction="horizontal"
+		data-parallax-speed="0.5"
+		>Parallax</h3
+	>
+	<h3
+		class="parallax-element"
+		data-parallax-direction="horizontal"
+		data-parallax-speed="-0.5"
+		>Is Cool</h3
+	>
+	<div class="box parallax-element" data-parallax-speed="-1.4"></div>
+</section>
+```
+
+```js
+// Parallax
+import giftbag from "../src";
+
+const { parallax } = giftbag();
+
+const parallaxElements = document.querySelectorAll(".parallax-element");
+
+parallaxElements.forEach((element) => parallax({ el: element }));
+```
