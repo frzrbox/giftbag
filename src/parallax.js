@@ -1,6 +1,8 @@
 
 
 export default function parallax({ el, ease = 'linear' }) {
+    let ticking = false;
+
     function runParallax() {
         const pageTop = window.pageYOffset;
         const pageMid = pageTop + window.innerHeight / 2;
@@ -37,11 +39,16 @@ export default function parallax({ el, ease = 'linear' }) {
         }
 
         el.style.transition = `transform ${ease}`;
-
-        requestAnimationFrame(runParallax);
     }
 
 
-    window.addEventListener('scroll', runParallax)
-
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                runParallax();
+                ticking = false;
+            })
+        };
+        ticking = true;
+    })
 }
