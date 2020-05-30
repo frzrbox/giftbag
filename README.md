@@ -4,12 +4,13 @@
 
 A lightweight library for quickly building animations
 
-[View Demo]('https://giftbagjs.com')
+[View Demo](https://giftbagjs.com)<br/>
 
 **Content** <br/>
 [Dark Mode](#dark-mode)<br/>
 [Theme Builder](#theme-builder)<br/>
 [Parallax](#parallax)<br/>
+[Stagger Children](#stagger-children)</br>
 
 **Get Started** <br/>
 `npm i giftbag`
@@ -193,6 +194,8 @@ Create and customize multi layered parallax effects
 - `data-parallax-speed` - positive values animate from left / right or top / bottom, while negative values will do the opposite. The higher the value the faster the speed.
 - `data-parallax-direction` - either `horizontal` or `vertical`
 
+**Example**
+
 ```html
 <section>
 	<h3
@@ -220,4 +223,59 @@ const { parallax } = giftbag();
 const parallaxElements = document.querySelectorAll(".parallax-element");
 
 parallaxElements.forEach((element) => parallax({ el: element }));
+```
+
+## Stagger Children
+
+A quick utility to add staggering effects then animate with css
+
+**Stagger Children takes an object of options**
+
+| name       | description                                       | default | optional |
+| ---------- | ------------------------------------------------- | ------- | -------- |
+| parent     | the parent that all staggered elements will be in | none    | required |
+| transition | adds the stagger to the transition-delay          | true    | optional |
+| animation  | adds the stagger to the animation-delay           | false   | optional |
+| stagger    | the interval between each staggered element       | 0.1     | optional |
+
+**example**
+
+```html
+<section class="stagger-children">
+	<h1>hi</h1>
+	<h1>Stagger</h1>
+	<h1>Me</h1>
+</section>
+```
+
+```js
+// Stagger Children
+const staggerParents = document.querySelectorAll(".stagger-children");
+
+staggerParents.forEach((parent) => {
+	staggerChildren({
+		parent: parent,
+		animation: true,
+	});
+});
+```
+
+```css
+.stagger-children h1 {
+	opacity: 0;
+	transform: translate3d(0, 50px, 0);
+	animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeInUp {
+	0% {
+		opacity: 0;
+		transform: translate3d(0, 150px, 0);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translate3d(0, 0px, 0);
+	}
+}
 ```
