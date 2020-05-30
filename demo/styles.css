@@ -218,3 +218,22 @@ select {
     box-shadow: var(--box-shadow);
     border-radius: 10px;
 }
+
+/* Scroll & Stagger */
+.stagger-children h1 {
+    opacity: 0;
+    transform: translate3d(0, 50px, 0);
+    animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 150px, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0px, 0);
+    }
+}

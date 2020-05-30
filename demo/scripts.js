@@ -1,6 +1,6 @@
 import giftbag from '../src'
 
-const { themeBuilder, scroll, parallax } = giftbag();
+const { themeBuilder, scroll, parallax, staggerChildren } = giftbag();
 
 // Has to take in an intial value which will be the starting theme, unless a user had previously chosen a different theme
 const siteThemeBuilder = themeBuilder({ initial: 'winter' });
@@ -20,3 +20,13 @@ themeSelector.addEventListener('change', e => {
 const parallaxElements = document.querySelectorAll('.parallax-element')
 
 parallaxElements.forEach(el => parallax({ el }))
+
+// Stagger Children
+const staggerParents = document.querySelectorAll('.stagger-children');
+
+staggerParents.forEach(parent => {
+    staggerChildren({
+        parent: parent,
+        animation: true
+    })
+})
