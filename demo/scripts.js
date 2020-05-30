@@ -27,6 +27,21 @@ const staggerParents = document.querySelectorAll('.stagger-children');
 staggerParents.forEach(parent => {
     staggerChildren({
         parent: parent,
-        animation: true
+        animation: true,
+        stagger: 0.05
     })
+})
+
+// Non giftbag code
+const toggleItemsButton = document.querySelector('.toggle-items-button');
+const itemsContainer = document.querySelector('.items-container');
+
+toggleItemsButton.addEventListener('click', () => {
+    itemsContainer.classList.toggle('visible');
+
+    if (itemsContainer.classList.contains('visible')) {
+        toggleItemsButton.textContent = 'Hide Me'
+    } else {
+        toggleItemsButton.textContent = 'Show Me'
+    }
 })
