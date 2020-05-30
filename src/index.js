@@ -2,16 +2,15 @@ import darkMode from './darkMode'
 import themeBuilder from './themeBuilder'
 import scroll from './scroll'
 import parallax from './parallax'
+import staggerChildren from './staggerChildren'
 
 const giftbag = () => {
     const methods = {
-        log() {
-            console.log('hello')
-        },
         darkMode,
         themeBuilder,
         scroll,
-        parallax
+        parallax,
+        staggerChildren
     }
 
     return methods
