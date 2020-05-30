@@ -4,7 +4,7 @@
 
 A lightweight library for quickly building animations
 
-[View Demo]('https://giftbagjs.com')
+[View Demo](https://giftbagjs.com)<br/>
 
 **Content** <br/>
 [Dark Mode](#dark-mode)<br/>
