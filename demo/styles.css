@@ -207,11 +207,12 @@ nav {
     position: fixed;
     top: 20px;
     right: 20px;
+    z-index: 100;
 }
 
 nav ul {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     place-items: center;
     grid-gap: 10px;
 }
