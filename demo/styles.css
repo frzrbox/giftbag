@@ -276,10 +276,22 @@ nav .stagger-children li {
 #scroll h3,
 #scroll p {
     margin: 0;
+    transform: translate3d(0, 100px, 0);
+    transition: all .5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    opacity: 0;
 }
 
 #scroll h3 {
     text-align: right;
+    transform: translate3d(-50px, 0, 0);
+    opacity: 0;
+    transition: all .5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+#scroll h3.in-view,
+#scroll p.in-view {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
 }
 
 @media(min-width: 768px) {
