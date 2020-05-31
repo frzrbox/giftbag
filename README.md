@@ -239,7 +239,7 @@ A quick utility to add staggering effects then animate with css
 | animation  | adds the stagger to the animation-delay           | false   | optional |
 | stagger    | the interval between each staggered element       | 0.1     | optional |
 
-**example**
+**Example**
 
 ```html
 <section class="stagger-children">
