@@ -265,6 +265,41 @@ nav .stagger-children li {
     }
 }
 
+/* Scroll */
+#scroll {
+    width: 95%;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20vh 0;
+}
+
+#scroll h3,
+#scroll p {
+    margin: 0;
+}
+
+#scroll h3 {
+    text-align: right;
+}
+
+@media(min-width: 768px) {
+    #scroll {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-gap: 50px;
+        justify-content: center;
+    }
+
+    #scroll h3 {
+        font-size: 3rem;
+    }
+
+    #scroll p {
+        font-size: 2rem;
+    }
+}
+
+
 /* Parallax */
 .full-height {
     height: 100vh;
@@ -295,6 +330,8 @@ nav .stagger-children li {
     box-shadow: var(--box-shadow);
     border-radius: 10px;
 }
+
+
 
 /* Stagger */
 #stagger {

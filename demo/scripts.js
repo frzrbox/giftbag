@@ -32,6 +32,8 @@ staggerParents.forEach(parent => {
     })
 })
 
+// Scroll
+
 // Non giftbag code
 const toggleItemsButton = document.querySelector('.toggle-items-button');
 const itemsContainer = document.querySelector('.items-container');
