@@ -10,6 +10,7 @@ A lightweight library for quickly building animations
 [Dark Mode](#dark-mode)<br/>
 [Theme Builder](#theme-builder)<br/>
 [Parallax](#parallax)<br/>
+[Scroll](#scroll)<br/>
 [Stagger Children](#stagger-children)</br>
 
 **Get Started** <br/>
@@ -238,7 +239,7 @@ A quick utility to add staggering effects then animate with css
 | animation  | adds the stagger to the animation-delay           | false   | optional |
 | stagger    | the interval between each staggered element       | 0.1     | optional |
 
-**example**
+**Example**
 
 ```html
 <section class="stagger-children">
@@ -277,5 +278,76 @@ staggerParents.forEach((parent) => {
 		opacity: 1;
 		transform: translate3d(0, 0px, 0);
 	}
+}
+```
+
+## Scroll
+
+Scroll based animations built with the [intersection observer](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+
+**Scroll takes in an object of options**
+| name | description | default | optional |
+|-------------|-----------------------------------------|---------|----------|
+| el | target element for the animation | none | required |
+| activeClass | class name that will be added to the el | in-view | optional |
+| threshold | when to animate the el (between 0 - 1) | 0.2 | optional |
+
+**Attributes** <br/>
+By default the animation will only run the first time the element is in view, if you want it to run every time the add the `data-reverse` attribute to the element.
+
+```html
+<p class="scroll-element" data-reverse>Animate me on scroll</p>
+```
+
+**Example**
+
+```html
+<section id="scroll">
+	<h3 class="scroll-element"
+		>All the animations you see on your
+		<span class="highlight">favorite sites</span>
+	</h3>
+	<p class="scroll-element"
+		>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis obcaecati
+		placeat eaque provident labore excepturi. Officia vel sed cum consequuntur?
+		Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi
+		blanditiis quidem aliquam dolor, quam neque quibusdam voluptatem voluptate,
+		ad aspernatur repellendus pariatur. Sequi deserunt magnam dignissimos quia,
+		asperiores architecto?</p
+	>
+</section>
+```
+
+```js
+// Scroll
+const scrollElements = document.querySelectorAll(".scroll-element");
+
+scrollElements.forEach((el) => {
+	scroll({
+		el,
+	});
+});
+```
+
+```css
+#scroll h3,
+#scroll p {
+	margin: 0;
+	transform: translate3d(0, 100px, 0);
+	transition: all 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+	opacity: 0;
+}
+
+#scroll h3 {
+	text-align: right;
+	transform: translate3d(-50px, 0, 0);
+	opacity: 0;
+	transition: all 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+#scroll h3.in-view,
+#scroll p.in-view {
+	transform: translate3d(0, 0, 0);
+	opacity: 1;
 }
 ```
