@@ -292,7 +292,7 @@ Scroll based animations built with the [intersection observer](https://developer
 | activeClass | class name that will be added to the el | in-view | optional |
 | threshold | when to animate the el (between 0 - 1) | 0.2 | optional |
 
-**Attributes**
+**Attributes** <br/>
 By default the animation will only run the first time the element is in view, if you want it to run every time the add the `data-reverse` attribute to the element.
 
 ```html
