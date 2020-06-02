@@ -71,22 +71,24 @@ function createDynamicStyle(el, index, from, to, duration, delay) {
 
     // Inject new styles into the css 
     elementStyle.sheet.insertRule(keyframe);
-    elementStyle.sheet.insertRule(`${el} { ${fromStyles}; animation: element${index}Animation  ${duration}s forwards ${delay} }`);
+    elementStyle.sheet.insertRule(`${el} {
+         ${fromStyles};
+          animation: element${index}Animation  ${duration}s forwards ${delay};
+        }`);
 }
 
 // Main chain function
-export default function chain({ delay = 0 } = {}, elementsArr) {
-    let initialDelay = delay;
-
+export default function chain(elementsArr, direction = 'normal') {
     elementsArr.map((el, i) => {
         const { element, delay = 0, from, to, duration = 1 } = el;
 
-        let elementDelay = `${delay + initialDelay}s`;
+        let elementDelay = `${delay}s`;
 
         if (i > 0) {
-            elementDelay = `${elementsArr[i - 1].duration + delay + initialDelay}s`
+            elementDelay = `${elementsArr[i - 1].duration + delay}s`
         }
 
-        createDynamicStyle(element, i, from, to, duration, elementDelay)
+        // document.querySelector(element).style.animationDirection = direction === 'normal' ? 'normal' : 'reverse';
+        createDynamicStyle(element, i, from, to, duration, elementDelay);
     })
 }

@@ -41,51 +41,46 @@ scrollElements.forEach(el => {
 });
 
 // Chain
-chain(
+
+const config = [
     {
-        delay: 0.5
-    },
-    [
-        {
-            element: '.first',
-            duration: 1,
-            from: {
-                opacity: 0,
-                rotateX: 90
-            },
-            to: {
-                opacity: 1,
-                rotateX: 0
-            },
+        element: 'nav',
+        duration: 1,
+        from: {
+            x: '100%',
         },
-        {
-            element: '.second',
-            duration: 1,
-            from: {
-                opacity: 0,
-                x: '50px',
-                rotate: 50,
-                scaleX: 0,
-                background: `var(--dark-section-background)`
-            },
-            to: {
-                opacity: 1,
-                x: 0,
-                rotate: 0,
-                scaleX: 1,
-                background: `var(--primary-accent)`
-            }
-        },
-        {
-            element: '.third',
-            duration: 0.7,
-            delay: 0.2,
-            from: { opacity: 0, y: '60px' },
-            to: { opacity: 1, y: 0 }
+        to: {
+            x: 0
         }
-    ])
+    },
+    {
+        element: 'nav ul',
+        duration: 0.4,
+        from: {
+            opacity: 0
+        },
+        to: {
+            opacity: 1
+        }
+    }
+]
+
 
 // Non giftbag code
+const menuButton = document.querySelector('.menu-button');
+const nav = document.querySelector('nav')
+
+menuButton.addEventListener('click', () => {
+
+    nav.classList.toggle('active');
+
+    if (nav.classList.contains('active')) {
+        chain(config, 'normal');
+    } else {
+        chain(config, 'reverse')
+    }
+})
+
 const toggleItemsButton = document.querySelector('.toggle-items-button');
 const itemsContainer = document.querySelector('.items-container');
 
@@ -97,4 +92,4 @@ toggleItemsButton.addEventListener('click', () => {
     } else {
         toggleItemsButton.textContent = 'Show Me'
     }
-})
+});
