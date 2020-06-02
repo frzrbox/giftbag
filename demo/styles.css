@@ -387,5 +387,5 @@ nav .stagger-children li {
 .second {
     height: 300px;
     width: 50%;
-    background: red;
+    /* background: red; */
 }

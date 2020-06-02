@@ -8,41 +8,38 @@ function convertToTransform(prop) {
     let newAnimValue = [];
 
     const elementAnimProps = Object.keys(prop);
-    const values = ['x', 'y', 'z', 'rotate', 'rotateX', 'rotateY', 'rotateZ', 'scale', 'scaleX', 'scaleY', 'scaleZ']
-    const animatable = elementAnimProps.filter(animProp => values.includes(animProp));
-
+    const values = ['x', 'y', 'z', 'rotate', 'rotateX', 'rotateY', 'rotateZ', 'scale', 'scaleX', 'scaleY', 'scaleZ'];
 
     // Handles all property edge cases
-    if (animatable.includes('x' || 'y' || 'z')) {
-        const { x = 0, y = 0, z = 0 } = prop;
+    const animatable = elementAnimProps.filter(animProp => values.includes(animProp));
+    const { x = 0, y = 0, z = 0 } = prop;
+
+    function handleCustomValues(custom, unit = '') {
+        if (animatable.includes(custom)) {
+            return newAnimValue = [...newAnimValue, `${custom}(${prop[custom]}${unit})`];
+        }
+    }
+
+    if (animatable.includes('x') || animatable.includes('y') || animatable.includes('z')) {
         newAnimValue = [...newAnimValue, `translate3d(${x}, ${y}, ${z}) `];
     }
 
     if (animatable.includes('scale')) {
         const { scale } = prop;
-        newAnimValue = [...newAnimValue, `scale(${scale}) `]
+        newAnimValue = [...newAnimValue, `scale(${scale}) `];
     }
 
-    // values.map((value, i) => {
-    //     const valid = elementAnimProps.filter(animProp => animProp === value);
+    if (animatable.includes('rotate')) {
+        const { rotate } = prop;
+        newAnimValue = [...newAnimValue, `rotate(${rotate}deg) `];
+    }
 
-
-
-    //     // Handles all property edge cases
-    //     if (valid[0] === 'x' || 'y' || 'z') {
-    //         const { x = 0, y = 0, z = 0 } = prop;
-    //         newAnimValue = [...newAnimValue, `translate3d(${x}, ${y}, ${z}) `];
-    //     }
-
-    //     if (valid[0] === 'scale') {
-    //         const { scale } = prop;
-    //         newAnimValue = [...newAnimValue, `scale(${scale}) `]
-    //     }
-
-
-    // });
-
-
+    handleCustomValues('scaleX');
+    handleCustomValues('scaleY');
+    handleCustomValues('scaleZ');
+    handleCustomValues('rotateX', 'deg');
+    handleCustomValues('rotateY', 'deg');
+    handleCustomValues('rotateZ', 'deg');
 
     newStyles = { ...prop, transform: newAnimValue.join('') };
     return newStyles
@@ -78,14 +75,16 @@ function createDynamicStyle(el, index, from, to, duration, delay) {
 }
 
 // Main chain function
-export default function chain(elementsArr) {
+export default function chain({ delay = 0 } = {}, elementsArr) {
+    let initialDelay = delay;
+
     elementsArr.map((el, i) => {
         const { element, delay = 0, from, to, duration = 1 } = el;
 
-        let elementDelay = `${delay}s`;
+        let elementDelay = `${delay + initialDelay}s`;
 
         if (i > 0) {
-            elementDelay = `${elementsArr[i - 1].duration + delay}s`
+            elementDelay = `${elementsArr[i - 1].duration + delay + initialDelay}s`
         }
 
         createDynamicStyle(element, i, from, to, duration, elementDelay)

@@ -15,7 +15,6 @@ themeSelector.addEventListener('change', e => {
     siteThemeBuilder.setTheme(e.target.value);
 })
 
-
 // Parallax
 const parallaxElements = document.querySelectorAll('.parallax-element')
 
@@ -42,44 +41,49 @@ scrollElements.forEach(el => {
 });
 
 // Chain
-// let from = { opacity: 0, color: 'blue', transformOrigin: 'center', borderRadius: '5px', x: '20px', y: '50px' };
-// let to = { opacity: 1, color: 'red', borderRadius: '10%', x: '0px', y: '0px' };
-
-
-
-chain([
+chain(
     {
-        element: '.first',
-        duration: 0.4,
-        delay: 0.2,
-        from: {
-            opacity: 0
-        },
-        to: {
-            opacity: 1
-        },
+        delay: 0.5
     },
-    {
-        element: '.second',
-        duration: 1,
-        from: {
-            opacity: 0,
-            x: '500px'
+    [
+        {
+            element: '.first',
+            duration: 1,
+            from: {
+                opacity: 0,
+                rotateX: 90
+            },
+            to: {
+                opacity: 1,
+                rotateX: 0
+            },
         },
-        to: {
-            opacity: 1,
-            x: 0
+        {
+            element: '.second',
+            duration: 1,
+            from: {
+                opacity: 0,
+                x: '50px',
+                rotate: 50,
+                scaleX: 0,
+                background: `var(--dark-section-background)`
+            },
+            to: {
+                opacity: 1,
+                x: 0,
+                rotate: 0,
+                scaleX: 1,
+                background: `var(--primary-accent)`
+            }
+        },
+        {
+            element: '.third',
+            duration: 0.7,
+            delay: 0.2,
+            from: { opacity: 0, y: '60px' },
+            to: { opacity: 1, y: 0 }
         }
-    },
-    {
-        element: '.third',
-        duration: 0.7,
-        from: { scale: 1 },
-        to: { scale: 2 }
-    }
-])
-
-
+    ])
 
 // Non giftbag code
 const toggleItemsButton = document.querySelector('.toggle-items-button');
