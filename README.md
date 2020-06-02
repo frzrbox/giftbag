@@ -1,5 +1,3 @@
-# ⚠️⚠️ Refactored version of original giftbag js don't use yet ⚠️⚠️
-
 # Giftbag
 
 A lightweight library for quickly building animations
@@ -184,7 +182,7 @@ Create and customize multi layered parallax effects
 | name | description | optional |
 |------|---------------------------|----------|
 | el | target parallax element | required |
-| ease | Returns the current theme | optional |
+| ease | easing the element will animate with | optional |
 
 **Element attributes**
 | name | description | default |

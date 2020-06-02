@@ -3,6 +3,7 @@ import themeBuilder from './themeBuilder'
 import scroll from './scroll'
 import parallax from './parallax'
 import staggerChildren from './staggerChildren'
+import chain from './chain'
 
 const giftbag = () => {
     const methods = {
@@ -10,7 +11,8 @@ const giftbag = () => {
         themeBuilder,
         scroll,
         parallax,
-        staggerChildren
+        staggerChildren,
+        chain
     }
 
     return methods

@@ -1,6 +1,6 @@
 import giftbag from '../src'
 
-const { themeBuilder, scroll, parallax, staggerChildren } = giftbag();
+const { themeBuilder, scroll, chain, parallax, staggerChildren } = giftbag();
 
 // Has to take in an intial value which will be the starting theme, unless a user had previously chosen a different theme
 const siteThemeBuilder = themeBuilder({ initial: 'winter' });
@@ -14,7 +14,6 @@ themeSelector.value = siteThemeBuilder.getCurrentTheme()
 themeSelector.addEventListener('change', e => {
     siteThemeBuilder.setTheme(e.target.value);
 })
-
 
 // Parallax
 const parallaxElements = document.querySelectorAll('.parallax-element')
@@ -39,11 +38,49 @@ scrollElements.forEach(el => {
     scroll({
         el
     })
-})
+});
 
+// Chain
+
+const config = [
+    {
+        element: 'nav',
+        duration: 1,
+        from: {
+            x: '100%',
+        },
+        to: {
+            x: 0
+        }
+    },
+    {
+        element: 'nav ul',
+        duration: 0.4,
+        from: {
+            opacity: 0
+        },
+        to: {
+            opacity: 1
+        }
+    }
+]
 
 
 // Non giftbag code
+const menuButton = document.querySelector('.menu-button');
+const nav = document.querySelector('nav')
+
+menuButton.addEventListener('click', () => {
+
+    nav.classList.toggle('active');
+
+    if (nav.classList.contains('active')) {
+        chain(config, 'normal');
+    } else {
+        chain(config, 'reverse')
+    }
+})
+
 const toggleItemsButton = document.querySelector('.toggle-items-button');
 const itemsContainer = document.querySelector('.items-container');
 
@@ -55,4 +92,4 @@ toggleItemsButton.addEventListener('click', () => {
     } else {
         toggleItemsButton.textContent = 'Show Me'
     }
-})
+});
