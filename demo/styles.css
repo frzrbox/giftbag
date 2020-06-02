@@ -381,3 +381,22 @@ nav .stagger-children li {
     opacity: 1;
     transition: all .2s ease-in-out;
 }
+
+/* Chain  */
+
+.first,
+.second,
+.third {
+    opacity: 0;
+    animation: fadeIn forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1
+    }
+}

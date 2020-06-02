@@ -1,6 +1,6 @@
 import giftbag from '../src'
 
-const { themeBuilder, scroll, parallax, staggerChildren } = giftbag();
+const { themeBuilder, scroll, chain, parallax, staggerChildren } = giftbag();
 
 // Has to take in an intial value which will be the starting theme, unless a user had previously chosen a different theme
 const siteThemeBuilder = themeBuilder({ initial: 'winter' });
@@ -39,7 +39,23 @@ scrollElements.forEach(el => {
     scroll({
         el
     })
-})
+});
+
+// Chain
+chain([
+    {
+        element: '.first',
+        duration: 0.4,
+    },
+    {
+        element: '.second',
+        duration: 0.6,
+    },
+    {
+        element: '.third',
+        duration: 0.5,
+    }
+])
 
 
 
