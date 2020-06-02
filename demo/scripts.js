@@ -46,10 +46,11 @@ chain([
     {
         element: '.first',
         duration: 0.4,
+        delay: 0.2
     },
     {
         element: '.second',
-        duration: 0.6,
+        duration: 1,
     },
     {
         element: '.third',
