@@ -53,24 +53,20 @@ function convertToTransform(prop) {
     return newStyles;
 }
 
-// Build the keyframe and custom css class for each animation in the chain
-function createDynamicStyle({ el, duration = 1, delay = 0, anim }, index, direction, timeline) {
+// Create a new css class for each element with their animations
+function createDynamicStyle(el, index, from, to, duration, delay) {
     let elementStyle = document.createElement('style');
     document.head.appendChild(elementStyle);
-
-    // Adds the duration or the previous element to the delay of the next
-    if (index > 0) {
-        delay = timeline[index - 1].duration + delay;
-    }
 
     let fromStyles = ``;
     let toStyles = ``;
 
-    // TODO - change convertedAnim = convertToTransform(anim)
-    const convertedAnim = anim;
+    // Handle edge cases transform properties
+    const convertedFrom = convertToTransform(from);
+    const convertedTo = convertToTransform(to);
 
-    Object.entries(convertedAnim).map(el => fromStyles += `${toKebabCase(el[0])}: ${el[1][0]}; `);
-    Object.entries(convertedAnim).map(el => toStyles += `${toKebabCase(el[0])}: ${el[1][1]}; `);
+    Object.entries(convertedFrom).map(el => { fromStyles += `${toKebabCase(el[0])}:${el[1]};` });
+    Object.entries(convertedTo).map(el => { toStyles += `${toKebabCase(el[0])}:${el[1]};` });
 
     let keyframe = `@keyframes element${index}Animation{
         from{
@@ -81,18 +77,30 @@ function createDynamicStyle({ el, duration = 1, delay = 0, anim }, index, direct
         }
     }`;
 
+    console.log(keyframe)
 
-    // Add the custom class & keyframe to the stylesheet
+
+    // Inject new styles into the css 
     elementStyle.sheet.insertRule(keyframe);
     elementStyle.sheet.insertRule(`${el} {
-         ${fromStyles}
-        animation: element${index}Animation ${duration}s forwards ${delay}s;
-    }`);
+         ${fromStyles};
+          animation: element${index}Animation  ${duration}s forwards ${delay};
+        }`);
 
 }
 
-export default function chain(timeline, direction = 'normal') {
-    timeline.map((event, index) => {
-        return createDynamicStyle(event, index, direction, timeline)
+// Main chain function
+export default function chain(elementsArr, direction = 'normal') {
+    elementsArr.map((el, i) => {
+        const { element, delay = 0, from, to, duration = 1 } = el;
+
+        let elementDelay = `${delay}s`;
+
+        if (i > 0) {
+            elementDelay = `${elementsArr[i - 1].duration + delay}s`
+        }
+
+        // document.querySelector(element).style.animationDirection = direction === 'normal' ? 'normal' : 'reverse';
+        createDynamicStyle(element, i, from, to, duration, elementDelay, direction);
     })
-}  
+}

@@ -393,3 +393,9 @@ nav .stagger-children li {
     opacity: 1;
     transition: all .2s ease-in-out;
 }
+
+/* Chain  */
+.second {
+    height: 50px;
+    width: 500px;
+}

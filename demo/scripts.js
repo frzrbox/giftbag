@@ -44,26 +44,25 @@ scrollElements.forEach(el => {
 
 const config = [
     {
-        element: 'nav',
+        el: '.first',
         duration: 1,
-        from: {
-            x: '100%',
-        },
-        to: {
-            x: 0
+        anim: {
+            opacity: [0, 1],
         }
     },
     {
-        element: 'nav ul',
-        duration: 0.4,
-        from: {
-            opacity: 0
-        },
-        to: {
-            opacity: 1
+        el: '.second',
+        duration: 0.3,
+        delay: 0.1,
+        anim: {
+            background: ['blue', 'red'],
+            x: ['50px', '0px'],
+            opacity: [0, 1]
         }
     }
 ]
+
+chain(config)
 
 
 // Non giftbag code
@@ -71,14 +70,7 @@ const menuButton = document.querySelector('.menu-button');
 const nav = document.querySelector('nav')
 
 menuButton.addEventListener('click', () => {
-
     nav.classList.toggle('active');
-
-    if (nav.classList.contains('active')) {
-        chain(config, 'normal');
-    } else {
-        chain(config, 'reverse')
-    }
 })
 
 const toggleItemsButton = document.querySelector('.toggle-items-button');
