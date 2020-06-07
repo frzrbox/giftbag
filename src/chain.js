@@ -1,6 +1,4 @@
-function toKebabCase(str) {
-    return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
-}
+function toKebabCase(str) { return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase(); }
 
 // Takes shortcut props and converts them to css transforms
 function convertToTransform(anim) {
@@ -67,7 +65,7 @@ function createDynamicStyle({ el, duration = 1, delay = 0, anim }, index, direct
     let elementStyle = document.createElement('style');
     document.head.appendChild(elementStyle);
 
-    //TODO - Adds the duration and delay of all previous element to the delay of the next
+    //TODO: Make a reduce function - Adds the duration and delay of all previous element to the delay of the next
     let totalPreviousElementTime;
 
     // Only working for the previous element instead of adding all previous elements
