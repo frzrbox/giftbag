@@ -45,19 +45,30 @@ scrollElements.forEach(el => {
 const config = [
     {
         el: '.first',
-        duration: 1,
+        delay: 0.2,
+        duration: 0.4,
         anim: {
+            transformOrigin: ['center', 'center'],
             opacity: [0, 1],
+            y: ['-10px', '0']
         }
     },
     {
         el: '.second',
-        duration: 0.3,
-        delay: 0.1,
+        duration: 0.5,
         anim: {
             background: ['blue', 'red'],
             x: ['50px', '0px'],
-            opacity: [0, 1]
+            opacity: [0, 1],
+            y: ['10px', '0px'],
+            rotate: ['40deg', '0']
+        }
+    },
+    {
+        el: '.third',
+        duration: 0.5,
+        anim: {
+            color: ['black', 'green']
         }
     }
 ]
