@@ -55,6 +55,7 @@ const config = [
     },
     {
         el: '.second',
+        delay: 0.2,
         duration: 0.5,
         anim: {
             background: ['blue', 'red'],
@@ -68,10 +69,13 @@ const config = [
         el: '.third',
         duration: 0.5,
         anim: {
-            color: ['black', 'green']
+            color: ['black', 'green'],
+            opacity: [0, 1],
+            y: ['10px', 0]
         }
     }
 ]
+
 
 chain(config)
 
@@ -81,7 +85,7 @@ const menuButton = document.querySelector('.menu-button');
 const nav = document.querySelector('nav')
 
 menuButton.addEventListener('click', () => {
-    nav.classList.toggle('active');
+    chain(config).reverse()
 })
 
 const toggleItemsButton = document.querySelector('.toggle-items-button');
