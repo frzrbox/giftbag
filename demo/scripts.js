@@ -44,34 +44,29 @@ scrollElements.forEach(el => {
 
 const config = [
     {
-        el: '.first',
-        delay: 0.2,
-        duration: 0.4,
+        el: '.menu-button',
+        delay: 0.3,
+        duration: 0.3,
         anim: {
             transformOrigin: ['center', 'center'],
             opacity: [0, 1],
-            y: ['-10px', '0']
+            y: ['-30px', '0']
         }
     },
     {
-        el: '.second',
-        delay: 0.2,
+        el: '.hero-title',
         duration: 0.5,
         anim: {
-            background: ['blue', 'red'],
             x: ['50px', '0px'],
-            opacity: [0, 1],
-            y: ['10px', '0px'],
-            rotate: ['40deg', '0']
+            opacity: [0, 1]
         }
     },
     {
-        el: '.third',
-        duration: 0.5,
+        el: 'select',
+        duration: 0.3,
         anim: {
-            color: ['black', 'green'],
             opacity: [0, 1],
-            y: ['10px', 0]
+            y: ['50px', 0]
         }
     }
 ]
