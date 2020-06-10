@@ -63,7 +63,8 @@ const config = [
     },
     {
         el: 'select',
-        duration: 0.3,
+        duration: 0.2,
+        delay: 0.2,
         anim: {
             opacity: [0, 1],
             y: ['50px', 0]
@@ -71,16 +72,37 @@ const config = [
     }
 ]
 
+const fadeInChain = chain(config)
 
-chain(config)
+fadeInChain.play();
 
+const navConfig = [
+    {
+        el: 'nav',
+        duration: 0.4,
+        anim: {
+            x: ['100%', '0%'],
+            y: ['-100%', '0%']
+        }
+    }
+    ,
+    {
+        el: 'nav ul',
+        duration: 0.3,
+        anim: {
+            x: ['50px', 0],
+            opacity: [0, 1]
+        }
+    }
+]
+
+const navChain = chain(navConfig);
 
 // Non giftbag code
 const menuButton = document.querySelector('.menu-button');
-const nav = document.querySelector('nav')
 
 menuButton.addEventListener('click', () => {
-    chain(config).reverse()
+    navChain.toggle();
 })
 
 const toggleItemsButton = document.querySelector('.toggle-items-button');
