@@ -58,7 +58,7 @@ function createDynamicStyle({ el, duration = 1, anim }, index, direction, totalD
     Object.entries(convertedAnim).map(el => fromStyles += `${toKebabCase(el[0])}: ${el[1][0]}; `);
     Object.entries(convertedAnim).map(el => toStyles += `${toKebabCase(el[0])}: ${el[1][1]}; `);
 
-    let keyframe = `@keyframes element${index}Animation{
+    let keyframe = `@keyframes element${index}Animation${direction}{
         from{
             ${fromStyles}
         }
@@ -70,24 +70,45 @@ function createDynamicStyle({ el, duration = 1, anim }, index, direction, totalD
     // Add the custom class & keyframe to the stylesheet
     elementStyle.sheet.insertRule(keyframe);
     elementStyle.sheet.insertRule(`${el} {
-         ${fromStyles}
-        animation: element${index}Animation ${duration}s forwards ${direction} ${totalDelay}s;
+        animation: element${index}Animation${direction} ${duration}s both ${direction} ${totalDelay}s;
     }`);
 }
 
-export default function chain(timeline, direction = 'normal') {
+export default function chain(timeline) {
     let delayArr = [];
     let totalDelay = 0;
 
     timeline.map(({ delay = 0, duration }, index) => {
         index !== 0 ? delayArr.push(delay + duration) : delayArr.push(delay)
     })
-    // Reverse the order of the delays if the want to reverse the chain
-    if (direction === 'reverse') delayArr = delayArr.reverse();
 
-    timeline.map((event, index) => {
-        // add all the values of the delayArr up to the index + 1 and set it as the totalDelay
-        totalDelay = delayArr.slice(0, index + 1).reduce((acc, current) => acc + current);
-        return createDynamicStyle(event, index, direction, totalDelay)
-    });
+    let isToggled = false;
+
+    function returnChain(direction = 'normal', toggle = false) {
+
+        // Handle toggling the direction 
+        if (toggle) {
+            isToggled = !isToggled;
+            direction = isToggled ? 'normal' : 'reverse';
+        }
+
+        timeline.map((event, index) => {
+            // add all the values of the delayArr up to the index + 1 and set it as the totalDelay
+            totalDelay = delayArr.slice(0, index + 1).reduce((acc, current) => acc + current);
+
+            if (direction === 'reverse') {
+                totalDelay = delayArr.reverse().slice(index, delayArr.length).reduceRight((acc, current) => acc + current);
+            }
+
+            return createDynamicStyle(event, index, direction, totalDelay)
+        });
+    }
+
+    const methods = {
+        play: () => returnChain(),
+        reverse: () => returnChain('reverse'),
+        toggle: (starting = 'normal') => returnChain(starting, true)
+    };
+
+    return methods;
 }  
