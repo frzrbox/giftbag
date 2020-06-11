@@ -374,7 +374,7 @@ To configure the chain you must pass it an array of objects that contain the ani
   }
   `
 <br/>
-- Shorthand Properties  -  all properties within `transform` don't need to be passed within `transform`: 
+- All properties within `transform` don't need to be passed within `transform`: 
 
 	`
 	anim: {
