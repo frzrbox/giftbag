@@ -367,7 +367,6 @@ To configure the chain you must pass it an array of objects that contain the ani
 
 
   - Key value pairs of the `anim` object follow this pattern:
-	<br/>
 
  	 `
   anim: {
@@ -375,16 +374,14 @@ To configure the chain you must pass it an array of objects that contain the ani
   }
   `
 <br/>
-- Shorthand Properties  -  all properties within `transform` don't need to be passed within `transform`
-	<br/>
-	```js
-	/* Rather than using transform(scale(0)) you can just 
-	pass it in the anim object */
+- Shorthand Properties  -  all properties within `transform` don't need to be passed within `transform`: 
+
+	`
 	anim: {
 		scale: [0, 1],
 		rotateX: ['40deg', '0deg']
 	}
-	```
+	`
 
   
 
