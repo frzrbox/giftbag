@@ -45,7 +45,7 @@ function convertToTransform(anim) {
 }
 
 // Build the keyframe and custom css class for each animation in the chain
-function createDynamicStyle({ el, duration = 1, anim }, index, direction, totalDelay = 0) {
+function createDynamicStyle({ el, duration = 1, ease = 'ease', anim }, index, direction, totalDelay = 0) {
     let elementStyle = document.createElement('style');
     document.head.appendChild(elementStyle);
 
@@ -58,7 +58,7 @@ function createDynamicStyle({ el, duration = 1, anim }, index, direction, totalD
     Object.entries(convertedAnim).map(el => fromStyles += `${toKebabCase(el[0])}: ${el[1][0]}; `);
     Object.entries(convertedAnim).map(el => toStyles += `${toKebabCase(el[0])}: ${el[1][1]}; `);
 
-    let keyframe = `@keyframes element${index}Animation${direction}{
+    let keyframe = `@keyframes element-${index}-${direction}{
         from{
             ${fromStyles}
         }
@@ -70,7 +70,7 @@ function createDynamicStyle({ el, duration = 1, anim }, index, direction, totalD
     // Add the custom class & keyframe to the stylesheet
     elementStyle.sheet.insertRule(keyframe);
     elementStyle.sheet.insertRule(`${el} {
-        animation: element${index}Animation${direction} ${duration}s both ${direction} ${totalDelay}s;
+        animation: element-${index}-${direction} ${duration}s ${ease} ${totalDelay}s both ${direction};
     }`);
 }
 
