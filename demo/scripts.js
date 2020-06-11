@@ -72,7 +72,7 @@ const config = [
     {
         el: 'select',
         duration: 0.2,
-        delay: 0.4,
+        delay: 0.3,
         anim: {
             opacity: [0, 1],
             y: ['50px', 0]
