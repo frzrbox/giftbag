@@ -20,12 +20,12 @@ A lightweight library for quickly building animations
 The purpose of dark mode is to act as a toggle only between two themes, if you want to build mulitple different themes you can use the [Theme Builder](#theme-builder) api
 
 **Dark Mode takes in an object of options to setup and initialize**
-| Name        | Description                                                     | Default      | Optional |
+| Name | Description | Default | Optional |
 | ----------- | --------------------------------------------------------------- | ------------ | -------- |
-| wrapper     | The container of the dark mode animation                        | none         | required |
-| activeClass | The class that will be applied to all children of the wrapper   | in-dark-mode | optional |
-| active      | The initial state of dark mode                                  | false        | optional |
-| trigger     | The element that will be used to toggle the dark mode animation | none         | required |
+| wrapper | The container of the dark mode animation | none | required |
+| activeClass | The class that will be applied to all children of the wrapper | in-dark-mode | optional |
+| active | The initial state of dark mode | false | optional |
+| trigger | The element that will be used to toggle the dark mode animation | none | required |
 
 **Example**
 
@@ -89,16 +89,16 @@ h3.in-dark-mode {
 Build multiple themes that can be toggled throughout your website
 
 **Theme builder can take an object of the following options**
-| Name     | Description                          | Default | Optional |
+| Name | Description | Default | Optional |
 | -------- | ------------------------------------ | ------- | -------- |
-| provider | The container of the theme animation | body    | optional |
-| initial  | Set the default theme to start in    | none    | optional |
+| provider | The container of the theme animation | body | optional |
+| initial | Set the default theme to start in | none | optional |
 
 **Methods**
-| name              | description                                           |
+| name | description |
 | ----------------- | ----------------------------------------------------- |
-| setTheme()        | Allows you to change the theme throughout the website |
-| getCurrentTheme() | Returns the current theme                             |
+| setTheme() | Allows you to change the theme throughout the website |
+| getCurrentTheme() | Returns the current theme |
 
 **Example**
 
@@ -180,15 +180,15 @@ body[data-theme="spring"] {
 Create and customize multi layered parallax effects
 
 **Customize parallax with an object of options**
-| name | description                          | optional |
+| name | description | optional |
 | ---- | ------------------------------------ | -------- |
-| el   | target parallax element              | required |
+| el | target parallax element | required |
 | ease | easing the element will animate with | optional |
 
 **Element attributes**
-| name                    | description                           | default  |
+| name | description | default |
 | ----------------------- | ------------------------------------- | -------- |
-| data-parallax-speed     | speed and direction of the parallax   | 0        |
+| data-parallax-speed | speed and direction of the parallax | 0 |
 | data-parallax-direction | orientation the parallax will animate | vertical |
 
 - `data-parallax-speed` - positive values animate from left / right or top / bottom, while negative values will do the opposite. The higher the value the faster the speed.
@@ -230,11 +230,11 @@ parallaxElements.forEach((element) => parallax({ el: element }));
 Scroll based animations built with the [intersection observer](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
 
 **Scroll takes in an object of options**
-| name        | description                             | default | optional |
+| name | description | default | optional |
 | ----------- | --------------------------------------- | ------- | -------- |
-| el          | target element for the animation        | none    | required |
+| el | target element for the animation | none | required |
 | activeClass | class name that will be added to the el | in-view | optional |
-| threshold   | when to animate the el (between 0 - 1)  | 0.2     | optional |
+| threshold | when to animate the el (between 0 - 1) | 0.2 | optional |
 
 **Attributes** <br/>
 By default the animation will only run the first time the element is in view, if you want it to run every time the add the `data-reverse` attribute to the element.
@@ -352,6 +352,7 @@ staggerParents.forEach((parent) => {
 ```
 
 ## Chain
+
 Build a timeline that chains multiple animations together
 
 **Config**
@@ -365,48 +366,36 @@ To configure the chain you must pass it an array of objects that contain the ani
 | anim     | an object of animatable values   | none    | required |
 | ease     | animation ease                   | ease    | optional |
 
+Key value pairs of the `anim` object follow this pattern:
 
-  - Key value pairs of the `anim` object follow this pattern:
+`anim: { animProp: [starting, ending] }`
 
- 	 `
-  anim: {
-  	animProp: [starting, ending]
-  }
-  `
-<br/>
-- All properties within `transform` don't need to be passed within `transform`: 
+All properties within `transform` don't need to be passed within `transform`:
 
-	`
-	anim: {
-		scale: [0, 1],
-		rotateX: ['40deg', '0deg']
-	}
-	`
-
-  
+`anim: { scale: [0, 1], rotateX: ['40deg', '0deg'] }`
 
 ```js
-import giftbag from 'giftbag';
+import giftbag from "giftbag";
 const { chain } = giftbag();
 
 const config = [
 	{
-		el: '.el-1',
+		el: ".el-1",
 		duration: 0.3,
 		anim: {
 			// Using x, y and z reference translate properties
-			x: ['20px', '0px']
-		}
+			x: ["20px", "0px"],
+		},
 	},
 	{
-		el: '.el-2',
+		el: ".el-2",
 		delay: 0.2,
 		duration: 0.2,
 		anim: {
-			y: ['40px', '0px']
-		}
-	}
-]
+			y: ["40px", "0px"],
+		},
+	},
+];
 
 const elementChain = chain(config);
 
@@ -419,6 +408,7 @@ elementChain.toggle();
 ```
 
 **Example**
+
 ```html
 <button class="menu-button">Menu Button</button>
 <section>
@@ -428,37 +418,36 @@ elementChain.toggle();
 ```
 
 ```js
-import giftbag from 'giftbag';
+import giftbag from "giftbag";
 const { chain } = giftbag();
 
 const config = [
 	{
-		el: 'menu-button',
+		el: "menu-button",
 		delay: 0.2,
 		duration: 0.3,
 		anim: {
 			opacity: [0, 1],
-			x: ['10px', '0px']
-		}
+			x: ["10px", "0px"],
+		},
 	},
 	{
-		el: 'h1',
+		el: "h1",
 		duration: 0.4,
 		anim: {
-			y: ['20px', '0'],
-			opacity: [0, 1]
-		}
+			y: ["20px", "0"],
+			opacity: [0, 1],
+		},
 	},
 	{
-		el: 'h2',
+		el: "h2",
 		duration: 0.3,
 		delay: 0.2,
 		anim: {
-			opacity: [0, 1]
-		}
-	}
-]
-
+			opacity: [0, 1],
+		},
+	},
+];
 
 const loadingChain = chain(config);
 
