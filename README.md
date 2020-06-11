@@ -355,7 +355,7 @@ staggerParents.forEach((parent) => {
 
 Build a timeline that chains multiple animations together
 
-**Config**
+**Config** <br/>
 To configure the chain you must pass it an array of objects that contain the animatable elements, each object contains the following values
 
 | name     | description                      | default | optional |
