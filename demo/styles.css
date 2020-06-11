@@ -160,7 +160,7 @@ select {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 999;
+    z-index: 9;
 }
 
 button {
@@ -199,53 +199,50 @@ a {
 }
 
 a:hover {
-    text-decoration-color: var(--dark-section-background);
+    text-decoration-color: var(--primary-accent);
 }
 
 /* Header  */
-nav {
+.menu-button {
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 100;
+    z-index: 200;
+    background: var(--dark-section-color);
 }
 
-nav ul {
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 60%;
+    max-width: 300px;
+    z-index: 100;
+    background: var(--light-section-color);
+    transform: translate3d(100%, 0, 0);
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     place-items: center;
-    grid-gap: 10px;
+}
+
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 nav a {
     font-size: 1.5rem;
     font-weight: 300;
-}
-
-nav .stagger-children li {
-    opacity: 0;
-    transform: translate3d(0, 30px, 0);
-    animation: fadeInUp 0.5s forwards;
-}
-
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translate3d(0, -50px, 0);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translate3d(0, 0px, 0);
-    }
+    font-size: 30px;
+    color: var(--dark-section-color);
 }
 
 /* Hero */
 
 #hero {
     height: 70vh;
-    display: flex;
-    align-items: flex-start;
 }
 
 #hero h3 {
@@ -256,6 +253,14 @@ nav .stagger-children li {
     text-transform: uppercase;
 }
 
+#hero button {
+    margin-left: 5vw;
+}
+
+#hero button a {
+    text-decoration: none;
+}
+
 @media (min-width: 768px) {
     #hero h3 {
         padding-top: 15vh;
@@ -264,6 +269,7 @@ nav .stagger-children li {
         max-width: 1100px;
         line-height: 1.3;
     }
+
 }
 
 /* Scroll */
@@ -380,4 +386,10 @@ nav .stagger-children li {
     transform: rotate(0deg) scale(1) translate3d(0, 0, 0);
     opacity: 1;
     transition: all .2s ease-in-out;
+}
+
+/* Chain  */
+.second {
+    height: 50px;
+    width: 500px;
 }

@@ -1,6 +1,6 @@
 import giftbag from '../src'
 
-const { themeBuilder, scroll, parallax, staggerChildren } = giftbag();
+const { themeBuilder, scroll, chain, parallax, staggerChildren } = giftbag();
 
 // Has to take in an intial value which will be the starting theme, unless a user had previously chosen a different theme
 const siteThemeBuilder = themeBuilder({ initial: 'winter' });
@@ -14,7 +14,6 @@ themeSelector.value = siteThemeBuilder.getCurrentTheme()
 themeSelector.addEventListener('change', e => {
     siteThemeBuilder.setTheme(e.target.value);
 })
-
 
 // Parallax
 const parallaxElements = document.querySelectorAll('.parallax-element')
@@ -39,11 +38,87 @@ scrollElements.forEach(el => {
     scroll({
         el
     })
-})
+});
 
+// Chain
 
+const config = [
+    {
+        el: '.menu-button',
+        delay: 0.3,
+        duration: 0.3,
+        anim: {
+            transformOrigin: ['center', 'center'],
+            opacity: [0, 1],
+            y: ['-30px', '0']
+        }
+    },
+    {
+        el: '.hero-title',
+        duration: 0.5,
+        anim: {
+            x: ['50px', '0px'],
+            opacity: [0, 1]
+        }
+    },
+    {
+        el: '#hero button',
+        duration: 0.2,
+        anim: {
+            y: ['30px', 0],
+            opacity: [0, 1]
+        }
+    },
+    {
+        el: 'select',
+        duration: 0.2,
+        delay: 0.3,
+        anim: {
+            opacity: [0, 1],
+            y: ['50px', 0]
+        }
+    }
+]
+
+const fadeInChain = chain(config)
+
+fadeInChain.play();
+
+const navConfig = [
+    {
+        el: 'nav',
+        duration: 0.4,
+        anim: {
+            x: ['100%', '0%']
+        }
+    },
+    {
+        el: 'nav ul',
+        duration: 0.3,
+        anim: {
+            x: ['50px', 0],
+            opacity: [0, 1]
+        }
+    }
+]
+
+const navChain = chain(navConfig);
 
 // Non giftbag code
+const menuButton = document.querySelector('.menu-button');
+
+menuButton.addEventListener('click', () => {
+    navChain.toggle();
+
+    menuButton.classList.toggle('menu-active');
+
+    if (menuButton.classList.contains('menu-active')) {
+        menuButton.innerHTML = 'Close';
+    } else {
+        menuButton.innerHTML = 'Menu'
+    }
+})
+
 const toggleItemsButton = document.querySelector('.toggle-items-button');
 const itemsContainer = document.querySelector('.items-container');
 
@@ -55,4 +130,4 @@ toggleItemsButton.addEventListener('click', () => {
     } else {
         toggleItemsButton.textContent = 'Show Me'
     }
-})
+});

@@ -10,6 +10,7 @@ A lightweight library for quickly building animations
 [Parallax](#parallax)<br/>
 [Scroll](#scroll)<br/>
 [Stagger Children](#stagger-children)</br>
+[Chain](#chain)<br/>
 
 **Get Started** <br/>
 `npm i giftbag`
@@ -20,7 +21,7 @@ The purpose of dark mode is to act as a toggle only between two themes, if you w
 
 **Dark Mode takes in an object of options to setup and initialize**
 | Name | Description | Default | Optional |
-|-------------|-----------------------------------------------------------------|--------------|----------|
+| ----------- | --------------------------------------------------------------- | ------------ | -------- |
 | wrapper | The container of the dark mode animation | none | required |
 | activeClass | The class that will be applied to all children of the wrapper | in-dark-mode | optional |
 | active | The initial state of dark mode | false | optional |
@@ -89,13 +90,13 @@ Build multiple themes that can be toggled throughout your website
 
 **Theme builder can take an object of the following options**
 | Name | Description | Default | Optional |
-|----------|-----------------------------------|---------|----------|
+| -------- | ------------------------------------ | ------- | -------- |
 | provider | The container of the theme animation | body | optional |
 | initial | Set the default theme to start in | none | optional |
 
 **Methods**
 | name | description |
-|-------------------|-------------------------------------------------------|
+| ----------------- | ----------------------------------------------------- |
 | setTheme() | Allows you to change the theme throughout the website |
 | getCurrentTheme() | Returns the current theme |
 
@@ -180,13 +181,13 @@ Create and customize multi layered parallax effects
 
 **Customize parallax with an object of options**
 | name | description | optional |
-|------|---------------------------|----------|
+| ---- | ------------------------------------ | -------- |
 | el | target parallax element | required |
 | ease | easing the element will animate with | optional |
 
 **Element attributes**
 | name | description | default |
-|-------------------------|---------------------------------------|----------|
+| ----------------------- | ------------------------------------- | -------- |
 | data-parallax-speed | speed and direction of the parallax | 0 |
 | data-parallax-direction | orientation the parallax will animate | vertical |
 
@@ -224,68 +225,13 @@ const parallaxElements = document.querySelectorAll(".parallax-element");
 parallaxElements.forEach((element) => parallax({ el: element }));
 ```
 
-## Stagger Children
-
-A quick utility to add staggering effects then animate with css
-
-**Stagger Children takes an object of options**
-
-| name       | description                                       | default | optional |
-| ---------- | ------------------------------------------------- | ------- | -------- |
-| parent     | the parent that all staggered elements will be in | none    | required |
-| transition | adds the stagger to the transition-delay          | true    | optional |
-| animation  | adds the stagger to the animation-delay           | false   | optional |
-| stagger    | the interval between each staggered element       | 0.1     | optional |
-
-**Example**
-
-```html
-<section class="stagger-children">
-	<h1>hi</h1>
-	<h1>Stagger</h1>
-	<h1>Me</h1>
-</section>
-```
-
-```js
-// Stagger Children
-const staggerParents = document.querySelectorAll(".stagger-children");
-
-staggerParents.forEach((parent) => {
-	staggerChildren({
-		parent: parent,
-		animation: true,
-	});
-});
-```
-
-```css
-.stagger-children h1 {
-	opacity: 0;
-	transform: translate3d(0, 50px, 0);
-	animation: fadeInUp 1s forwards;
-}
-
-@keyframes fadeInUp {
-	0% {
-		opacity: 0;
-		transform: translate3d(0, 150px, 0);
-	}
-
-	100% {
-		opacity: 1;
-		transform: translate3d(0, 0px, 0);
-	}
-}
-```
-
 ## Scroll
 
 Scroll based animations built with the [intersection observer](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
 
 **Scroll takes in an object of options**
 | name | description | default | optional |
-|-------------|-----------------------------------------|---------|----------|
+| ----------- | --------------------------------------- | ------- | -------- |
 | el | target element for the animation | none | required |
 | activeClass | class name that will be added to the el | in-view | optional |
 | threshold | when to animate the el (between 0 - 1) | 0.2 | optional |
@@ -348,4 +294,162 @@ scrollElements.forEach((el) => {
 	transform: translate3d(0, 0, 0);
 	opacity: 1;
 }
+```
+
+## Stagger Children
+
+A quick utility to add staggering effects then animate with css
+
+**Stagger Children takes an object of options**
+
+| name       | description                                       | default | optional |
+| ---------- | ------------------------------------------------- | ------- | -------- |
+| parent     | the parent that all staggered elements will be in | none    | required |
+| transition | adds the stagger to the transition-delay          | true    | optional |
+| animation  | adds the stagger to the animation-delay           | false   | optional |
+| stagger    | the interval between each staggered element       | 0.1     | optional |
+
+**Example**
+
+```html
+<section class="stagger-children">
+	<h1>hi</h1>
+	<h1>Stagger</h1>
+	<h1>Me</h1>
+</section>
+```
+
+```js
+// Stagger Children
+const staggerParents = document.querySelectorAll(".stagger-children");
+
+staggerParents.forEach((parent) => {
+	staggerChildren({
+		parent: parent,
+		animation: true,
+	});
+});
+```
+
+```css
+.stagger-children h1 {
+	opacity: 0;
+	transform: translate3d(0, 50px, 0);
+	animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeInUp {
+	0% {
+		opacity: 0;
+		transform: translate3d(0, 150px, 0);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translate3d(0, 0px, 0);
+	}
+}
+```
+
+## Chain
+
+Build a timeline that chains multiple animations together
+
+**Config** <br/>
+To configure the chain you must pass it an array of objects that contain the animatable elements, each object contains the following values
+
+| name     | description                      | default | optional |
+| -------- | -------------------------------- | ------- | -------- |
+| el       | target element for the animation | none    | required |
+| duration | duration of the animation        | 1       | optional |
+| delay    | delay of the animation           | 0       | optional |
+| anim     | an object of animatable values   | none    | required |
+| ease     | animation ease                   | ease    | optional |
+
+Key value pairs of the `anim` object follow this pattern:
+
+`anim: { animProp: [starting, ending] }`
+
+All properties within `transform` don't need to be passed within `transform`:
+
+`anim: { scale: [0, 1], rotateX: ['40deg', '0deg'] }`
+
+```js
+import giftbag from "giftbag";
+const { chain } = giftbag();
+
+const config = [
+	{
+		el: ".el-1",
+		duration: 0.3,
+		anim: {
+			// Using x, y and z reference translate properties
+			x: ["20px", "0px"],
+		},
+	},
+	{
+		el: ".el-2",
+		delay: 0.2,
+		duration: 0.2,
+		anim: {
+			y: ["40px", "0px"],
+		},
+	},
+];
+
+const elementChain = chain(config);
+
+// Play animation forward
+elementChain.play();
+// Reverse animation
+elementChain.reverse();
+// Toggle animation
+elementChain.toggle();
+```
+
+**Example**
+
+```html
+<button class="menu-button">Menu Button</button>
+<section>
+	<h1>Title</h1>
+	<h2>This is the subhead</h2>
+</section>
+```
+
+```js
+import giftbag from "giftbag";
+const { chain } = giftbag();
+
+const config = [
+	{
+		el: "menu-button",
+		delay: 0.2,
+		duration: 0.3,
+		anim: {
+			opacity: [0, 1],
+			x: ["10px", "0px"],
+		},
+	},
+	{
+		el: "h1",
+		duration: 0.4,
+		anim: {
+			y: ["20px", "0"],
+			opacity: [0, 1],
+		},
+	},
+	{
+		el: "h2",
+		duration: 0.3,
+		delay: 0.2,
+		anim: {
+			opacity: [0, 1],
+		},
+	},
+];
+
+const loadingChain = chain(config);
+
+loadingChain.play();
 ```
