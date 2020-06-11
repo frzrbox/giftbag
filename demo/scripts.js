@@ -62,9 +62,17 @@ const config = [
         }
     },
     {
+        el: '#hero button',
+        duration: 0.2,
+        anim: {
+            y: ['30px', 0],
+            opacity: [0, 1]
+        }
+    },
+    {
         el: 'select',
         duration: 0.2,
-        delay: 0.2,
+        delay: 0.3,
         anim: {
             opacity: [0, 1],
             y: ['50px', 0]
@@ -81,11 +89,9 @@ const navConfig = [
         el: 'nav',
         duration: 0.4,
         anim: {
-            x: ['100%', '0%'],
-            y: ['-100%', '0%']
+            x: ['100%', '0%']
         }
-    }
-    ,
+    },
     {
         el: 'nav ul',
         duration: 0.3,
@@ -103,6 +109,14 @@ const menuButton = document.querySelector('.menu-button');
 
 menuButton.addEventListener('click', () => {
     navChain.toggle();
+
+    menuButton.classList.toggle('menu-active');
+
+    if (menuButton.classList.contains('menu-active')) {
+        menuButton.innerHTML = 'Close';
+    } else {
+        menuButton.innerHTML = 'Menu'
+    }
 })
 
 const toggleItemsButton = document.querySelector('.toggle-items-button');
