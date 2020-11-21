@@ -1,3 +1,3 @@
 import giftbag from '../../src';
 
-console.log(giftbag);
+console.log(giftbag, 'hii');

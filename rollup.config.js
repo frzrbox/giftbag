@@ -2,6 +2,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
+import multiInput from 'rollup-plugin-multi-input';
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
@@ -26,14 +27,15 @@ export default [
 		],
 	},
 	{
-		input: 'site/js/scripts.js',
+		input: ['site/js/*.js'],
 		output: [
 			{
-				file: 'site/_includes/js/scripts.js',
+				dir: 'site/_includes/',
 				formate: 'umd',
 			},
 		],
 		plugins: [
+			multiInput({ relative: 'site/' }),
 			babel({
 				exclude: 'node_modules/**',
 				extensions,
