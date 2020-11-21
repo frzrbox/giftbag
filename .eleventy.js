@@ -14,7 +14,7 @@ module.exports = (config) => {
 		return new CleanCSS({}).minify(code).styles;
 	});
 
-	config.addPassthroughCopy('./src/assets/');
+	config.addPassthroughCopy('./site/assets/');
 
 	return {
 		markdownTemplateEngine: 'njk',

@@ -1,21 +1,21 @@
-import darkMode from './darkMode'
-import themeBuilder from './themeBuilder'
-import scroll from './scroll'
-import parallax from './parallax'
-import staggerChildren from './staggerChildren'
-import chain from './chain'
+import darkMode from './darkMode';
+import themeBuilder from './themeBuilder';
+import scroll from './scroll';
+import parallax from './parallax';
+import staggerChildren from './staggerChildren';
+import chain from './chain';
 
 const giftbag = () => {
-    const methods = {
-        darkMode,
-        themeBuilder,
-        scroll,
-        parallax,
-        staggerChildren,
-        chain
-    }
+	const methods = {
+		darkMode,
+		themeBuilder,
+		scroll,
+		parallax,
+		staggerChildren,
+		chain,
+	};
 
-    return methods
-}
+	return methods;
+};
 
-module.exports = giftbag;
+export default giftbag;
