@@ -8,7 +8,7 @@
 	],
 	"scripts": {
 		"dev": "concurrently \"npx eleventy --serve\" \"npx rollup -c -w\"",
-		"build": "concurrently \"npx eleventy\" \"npx rollup -c\""
+		"build": "concurrently \"npx rollup -c\" \"npx eleventy\""
 	},
 	"keywords": [
 		"parallax",

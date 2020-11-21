@@ -15,6 +15,8 @@ module.exports = (config) => {
 	});
 
 	config.addPassthroughCopy('./site/assets/');
+	config.addPassthroughCopy('./site/css/');
+	config.addPassthroughCopy({ './site/_includes/js': 'js' });
 
 	return {
 		markdownTemplateEngine: 'njk',

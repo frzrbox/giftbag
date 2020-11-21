@@ -29,7 +29,7 @@ export default [
 		input: 'site/js/scripts.js',
 		output: [
 			{
-				file: 'dist/js/scripts.js',
+				file: 'site/_includes/js/scripts.js',
 				formate: 'umd',
 			},
 		],
