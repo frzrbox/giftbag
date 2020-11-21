@@ -7,13 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
     {% include "partials/meta-info.njk" %}
-    <style>
-        {% include "critical/critical.css" %}
-    </style>
+ 
     {% if pageCriticalStyles %}
         {% for item in pageCriticalStyles %}
+            {% set css %}
+              {% include item %}
+            {% endset %}
             <style>
-                {% include item %}
+                {{ css | cssmin | safe }}
             </style>
         {% endfor %}
     {% endif %}

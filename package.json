@@ -1,29 +1,31 @@
 {
-  "name": "giftbag",
-  "version": "0.0.2",
-  "description": "A lightweight library for quickly building animations",
-  "main": "lib/index.js",
-  "files": [
-    "lib"
-  ],
-  "scripts": {
-    "dev": "npx parcel demo/index.html",
-    "build:lib": "npx rollup -c",
-    "build:docs": "npx parcel build demo/index.html"
-  },
-  "keywords": [
-    "parallax",
-    "scroll",
-    "animation",
-    "giftbag"
-  ],
-  "author": "frzrbox",
-  "license": "MIT",
-  "devDependencies": {
-    "@babel/core": "^7.10.5",
-    "@rollup/plugin-babel": "^5.1.0",
-    "@rollup/plugin-commonjs": "^14.0.0",
-    "@rollup/plugin-node-resolve": "^8.4.0",
-    "rollup-plugin-terser": "^6.1.0"
-  }
+	"name": "giftbag",
+	"version": "0.0.2",
+	"description": "A lightweight library for quickly building animations",
+	"main": "lib/index.js",
+	"files": [
+		"lib"
+	],
+	"scripts": {
+		"dev": "npx eleventy --serve",
+		"build:lib": "npx rollup -c",
+		"build:docs": "npx parcel build demo/index.html"
+	},
+	"keywords": [
+		"parallax",
+		"scroll",
+		"animation",
+		"giftbag"
+	],
+	"author": "frzrbox",
+	"license": "MIT",
+	"devDependencies": {
+		"@babel/core": "^7.10.5",
+		"@rollup/plugin-babel": "^5.1.0",
+		"@rollup/plugin-commonjs": "^14.0.0",
+		"@rollup/plugin-node-resolve": "^8.4.0",
+		"clean-css": "^4.2.3",
+		"html-minifier": "^4.0.0",
+		"rollup-plugin-terser": "^6.1.0"
+	}
 }
